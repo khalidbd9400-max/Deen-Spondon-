@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deen Spondon — দ্বীনের পথে</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@700;900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0e5c3f;--green-d:#052a1d;--black:#050a08;--gold:#c9a227;
+--card-bg:rgba(255,255,255,.055);--card-bd:rgba(201,162,39,.30);--card-tx:#eff7f1;--card-hv:rgba(255,255,255,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--black);color:var(--card-tx);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .35s}
+body[data-t="hisnul"]{--card-bg:#fff;--card-bd:#b6e3c7;--card-tx:#0c2417;--card-hv:#f2fdf6;background:#eefaf2;color:#0c2417}
+body[data-t="econ"]{--card-bg:#fff;--card-bd:#cfdcd2;--card-tx:#14251c;--card-hv:#f5f8f5;background:#f3f6f3;color:#14251c}
+body[data-t="prophets"]{--card-bg:#fdfbf3;--card-bd:#ded3ae;--card-tx:#2b2415;--card-hv:#f7f2e2;background:#efe9d8;color:#2b2415}
+body[data-t="sahaba"]{--card-bg:rgba(255,255,255,.06);--card-bd:rgba(120,220,180,.28);--card-tx:#eafaf2;--card-hv:rgba(255,255,255,.11);background:#06231c}
+body[data-t="stories"]{--card-bg:#fff;--card-bd:#c6dccb;--card-tx:#152a1d;--card-hv:#f1f9f4;background:#ecf4ee;color:#152a1d}
+body[data-t="names"]{--card-bg:#fff;--card-bd:#1a1a1a;--card-tx:#0a0a0a;--card-hv:#f6f6f6;background:#fbfbfb;color:#0a0a0a}
+body[data-t="donate"]{--card-bg:#fff;--card-bd:#f2c3cb;--card-tx:#2a0b12;--card-hv:#fff5f6;background:#fdeef1;color:#2a0b12}
+body[data-t="dua"]{--card-bg:#fff;--card-bd:#d9e6dc;--card-tx:#13261b;--card-hv:#f3faf5;background:#f7fbf8;color:#13261b}
+body[data-t="hadith"]{background:linear-gradient(180deg,#04120d,#062a1e 40%,#04120d)}
+body[data-t="home"]{background:radial-gradient(1200px 600px at 50% -10%,#0b3d2b,#050a08 70%)}
+#splash{position:fixed;inset:0;z-index:999;display:grid;place-items:center;text-align:center;
+background:radial-gradient(circle at 50% 45%,#0f6b4a 0%,#062a1e 45%,#030807 100%);transition:opacity .8s,visibility .8s}
+#splash.hide{opacity:0;visibility:hidden}
+.splash-in{position:relative;padding:2rem}
+.splash-txt{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(2.1rem,9vw,5.4rem);letter-spacing:.10em;
+background:linear-gradient(180deg,#ffffff,#d9f5e6 35%,#c9a227 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+filter:drop-shadow(0 6px 26px rgba(201,162,39,.45));animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.splash-sub{margin-top:.9rem;font-size:.95rem;letter-spacing:.35em;color:#a8e3c6;text-transform:uppercase;animation:rise 1s .2s both}
+.splash-line{width:120px;height:2px;margin:1.4rem auto 0;background:linear-gradient(90deg,transparent,#c9a227,transparent);animation:rise 1s .35s both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 70px}
+.topbar{display:flex;align-items:center;gap:12px;padding:16px 0 6px;max-width:1080px;margin:0 auto;padding-inline:16px}
+.brand{font-family:'Cinzel',serif;font-weight:900;letter-spacing:.14em;font-size:1.05rem;
+background:linear-gradient(90deg,#eafff4,#c9a227);-webkit-background-clip:text;background-clip:text;color:transparent;cursor:pointer}
+.back{margin-left:auto;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--card-bd);background:var(--card-bg);
+color:var(--card-tx);padding:7px 15px;border-radius:999px;font-size:.86rem;cursor:pointer;font-family:inherit}
+.back:hover{background:var(--card-hv)}
+h1.title{font-size:clamp(1.35rem,4.6vw,2rem);font-weight:700;text-align:center;margin:14px 0 4px}
+p.lead{text-align:center;opacity:.72;font-size:.9rem;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+.grid.one{grid-template-columns:1fr}
+.card{display:block;text-decoration:none;color:var(--card-tx);background:var(--card-bg);border:1px solid var(--card-bd);
+border-radius:16px;padding:14px;cursor:pointer;transition:.22s;box-shadow:0 8px 26px rgba(0,0,0,.10)}
+.card:hover{transform:translateY(-4px);background:var(--card-hv);box-shadow:0 14px 34px rgba(0,0,0,.20);border-color:var(--gold)}
+.card h3{font-size:1rem;font-weight:600;text-align:center;margin-bottom:10px;min-height:2.6em;display:grid;place-items:center}
+.thumb{position:relative;aspect-ratio:16/10;border-radius:11px;overflow:hidden;display:grid;place-items:center;
+background:linear-gradient(135deg,#0c4a34,#06201a)}
+.thumb .g{position:absolute;font-size:1.9rem;opacity:.55}
+.thumb img{position:relative;width:100%;height:100%;object-fit:cover;display:block;z-index:2}
+.row{display:flex;align-items:center;gap:14px;text-align:left}
+.row .num{flex:0 0 46px;height:46px;display:grid;place-items:center;border-radius:12px;font-weight:700;
+background:linear-gradient(145deg,#0e5c3f,#062a1e);color:#d9f5e6;border:1px solid rgba(201,162,39,.4)}
+body[data-t="econ"] .row .num{background:linear-gradient(145deg,#eaf3ec,#d7e6db);color:#0e5c3f;border:1px solid #b9d2c1}
+.row .txt{flex:1;font-size:.97rem;font-weight:500}
+.sub{display:block;font-size:.76rem;opacity:.68;margin-top:3px;font-weight:400}
+.meta{font-size:.74rem;opacity:.7;text-align:center}
+.hero-hand{position:fixed;inset:0;z-index:900;display:grid;place-items:center;background:#fff;transition:.5s}
+.hero-hand.hide{opacity:0;visibility:hidden}
+.hero-hand span{font-size:clamp(4rem,20vw,9rem);animation:pulse 1.1s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
+.bismillah{font-family:'Amiri',serif;font-size:clamp(1.5rem,6vw,2.6rem);text-align:center;margin:10px 0 4px;
+background:linear-gradient(180deg,#eafff4,#c9a227);-webkit-background-clip:text;background-clip:text;color:transparent}
+.namebox{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:14px;padding:14px 10px;text-align:center}
+.namebox .ar{font-family:'Amiri',serif;font-size:1.45rem;font-weight:700;direction:rtl;line-height:1.9}
+.namebox .bn{font-size:.9rem;font-weight:600;margin-top:6px}
+.namebox .mn{font-size:.76rem;opacity:.72;margin-top:2px}
+.pdfbox{border:1px dashed var(--card-bd);border-radius:16px;padding:26px 18px;text-align:center;opacity:.85;margin-top:20px}
+.foot{margin-top:52px;text-align:center;font-size:.82rem;opacity:.72;border-top:1px solid var(--card-bd);padding-top:22px;line-height:2}
+.foot a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor;cursor:pointer}
+.copybox{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:16px;padding:20px;text-align:center}
+.copybox .no{font-size:1.5rem;font-weight:700;letter-spacing:.06em;margin:8px 0}
+.btn{border:none;border-radius:10px;padding:9px 20px;font-family:inherit;font-weight:600;cursor:pointer;background:#e2136e;color:#fff;font-size:.85rem}
+.btn.ok{background:#0e5c3f}
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;cursor:pointer;border:1px solid var(--card-bd)}
+#lb{position:fixed;inset:0;z-index:950;background:rgba(3,8,6,.94);display:none;place-items:center;padding:18px}
+#lb.on{display:grid}
+#lb img{max-width:100%;max-height:78vh;border-radius:12px}
+#lb .bar{display:flex;gap:10px;margin-top:14px}
+#lb a,#lb button{border-radius:10px;padding:9px 18px;font-family:inherit;font-size:.85rem;cursor:pointer;
+border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
+.content{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:16px;padding:22px;margin-top:18px;font-size:.97rem;white-space:pre-wrap}
+@media(max-width:520px){.grid{gap:12px}.card{padding:11px}.card h3{font-size:.88rem}}
+</style>
+</head>
+<body data-t="home">
+<div id="splash"><div class="splash-in">
+  <div class="splash-txt">Deen Spondon</div>
+  <div class="splash-sub">Made by khalid</div>
+  <div class="splash-line"></div>
+</div></div>
+<div id="handSplash" class="hero-hand" style="display:none"><span>🤲</span></div>
+<div id="app"></div>
+<div id="lb"><div style="text-align:center"><img id="lbImg" alt=""><div class="bar"><a id="lbDl" download>ডাউনলোড</a><button onclick="document.getElementById('lb').classList.remove('on')">বন্ধ করুন</button></div></div></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const app = $('#app');
+const HOME=[
+ ['কুরআন শরীফ','quran','quran.jpg','📖'],
+ ['আল - হাদিস','hadith','images/hadith.jpg','📜'],
+ ['হাদিসে কুদসি','qudsi','images/qudsi.jpg','✨'],
+ ['ইসলামিক ফিকাহ','fiqh','images/fiqh.jpg','⚖️'],
+ ['হিসনুল মুসলিম','hisnul','images/hisnul.jpg','🛡️'],
+ ['ইসলামিক বইসমূহ','books','images/books.jpg','📚'],
+ ['ইসলামিক অর্থনীতি','econ','images/economy.jpg','💰'],
+ ['ইসলামিক উক্তি','quotes','images/quotes.jpg','🖼️'],
+ ['দোয়া এবং রুকিয়াহ','dua','images/dua.jpg','🤲'],
+ ['নবীদের জীবনী','prophets','images/prophets.jpg','🕌'],
+ ['সাহাবিদের জীবনী','sahaba','images/sahaba.jpg','⭐'],
+ ['ইসলামিক গল্প','stories','images/stories.jpg','🌙'],
+ ['গুরুত্বপূর্ণ আমল','amal','images/amal.jpg','📿'],
+ ['আল্লাহর ৯৯ টি নাম','names','images/names.jpg','☪️'],
+ ['দান করুন','donate','images/donate.jpg','❤️']];
+const HADITH=[['সহীহ বুখারী','৭৫৬৩','ইমাম বুখারী'],['সহীহ মুসলিম','৭৫৪৭','ইমাম মুসলিম'],['সুনানে আন-নাসায়ী','৫৭৫৮','ইমাম নাসায়ী'],['সুনানে আবু দাউদ','৫২৭৪','ইমাম আবু দাউদ'],['জামে\' আত-তিরমিযী','৩৯৫৬','ইমাম তিরমিজি'],['সুনানে ইবনে মাজাহ','৪৩৪১','ইমাম ইবনে মাজাহ'],['মুয়াত্তা ইমাম মালিক','১৮৩০','ইমাম মালিক'],['রিয়াদুস সালেহীন','১৯০৫','ইমাম নববী'],['বুলুগুল মারাম','১৫৬৮','ইবনে হাজার আসকালানী'],['আল-লু\'লু ওয়াল মারজান','১৯০৬','আল্লামা ফুয়াদ আল বাকী'],['হাদীস সম্ভার','২০১৩','আব্দুল হামিদ ফাইযি'],['সিলসিলা সহিহা','৬০','আল্লামা নাসিরুদ্দিন আলবানী'],['মিশকাতুল মাসাবীহ','৬২৯৪','আল্লামা খতীব তাবরেযী'],['আল-আদাবুল মুফরাদ','১৩৩৬','ইমাম বুখারি'],['শামায়েলে তিরমিযি','৩২২','ইমাম তিরমিজি']];
+const HISN=[['সালাত','🕌'],['সকাল - সন্ধা','🌅'],['ঘুম','🌙'],['রমাদান - সিয়াম','🌒'],['কুরআনের দোয়া','📖'],['খাদ্য ও পানীয়','🍽️'],['অসুস্থতা - মৃত্যু','🩺'],['রুকইয়াহ','🤲'],['আশ্রয় প্রার্থণা','🛡️'],['সামাজিক','🤝'],['পরিবার','🏠'],['সম্পত্তি - রিজিক','💎'],['শুকরিয়া - অনুতাপ','🌿'],['পবিত্রতা','💧'],['কাপড় পরিধান','👕'],['হজ্জ উমরাহ','🕋'],['সফর','✈️'],['প্রকৃতি','🌧️']];
+const BOOKS=['সীরাত বিশ্বকোষ','ইসলামের ইতিহাস','বাজেয়াপ্ত ইতিহাস','সাহসী মানুষের গল্প','ঈমানদীপ্ত কিশোর কাহিনি','মিরাজ ও বিঙ্গান','তাবিইদের জীবনকথা','মিরাজের তাৎপর্য','হজ্জ ও মাসায়েল','সুদ এক ভয়াবহ অভিশাপ','সুদবিহীন ব্যাংকিং','হজ্জাতুল্লাহিল বালিগাহ','শিরক','শবেবরাত সমাধান','শিরকের শিকড় পৌঁছে গেছে বহুদূর','শাবানের পনেরতম রজনী উদযাপন শরিয়তের দৃষ্টিভঙ্গী','মৃত্যুর ওপারে','মৃত্যুর পরে অনন্ত জীবন','পরকালের সম্বল','ঈমানের ৭৭ টি শাখা'];
+const ECON=['ইসলামী অর্থব্যবস্থায় যাকাত','ইসলামী অর্থনীতি','ইসলাম ও আধুনিক অর্থনীতি ও ব্যবসায়নীতি','আল-কুরআনে অর্থনীতির ২য় খন্ড','অর্থনৈতিক সমস্যার ইসলামী সমাধান','ইসলাম ও আধুনিক অর্থনৈতিক মতবাদ','ইসলামী অর্থনীতিতে পণ্য বিনিময় ও স্টক এক্সচেঞ্জ','ইসলামী ব্যাংকিং সমস্যা ও সমাধান','ইসলামী অর্থব্যবস্থার মূলনীতি','ইসলামী অর্থনীতির দর্শন ও কর্ম কৌশল','ইসলামী অর্থনীতি রূপরেখা','ইসলামী অর্থনীতির ভূমিকা','ইসলামী সাংস্কৃতিতে পর্ন বিনিময়','ইসলামিক দৃষ্টিকোণ থেকে অর্থশাস্ত্রের ভবিষ্যত','ইসলাম ও অর্থনৈতিক চ্যালেন্জ'];
+const PROPHETS=['হযরত আদম (আঃ)','হযরত নূহ (আঃ)','হযরত ইদ্রিস (আঃ)','হযরত হুদ (আঃ)','হযরত সালেহ (আঃ)','হযরত ইব্রাহিম (আঃ)','হযরত লুত (আঃ)','হযরত ইসমাইল (আঃ)','হযরত ইসহাক (আঃ)','হযরত ইয়াকুব (আঃ)','হযরত ইউসুফ (আঃ)','হযরত আইয়ুব (আঃ)','হযরত যুলকিফল (আঃ)','হযরত মূসা ও হারূণ (আঃ)','হযরত দাউদ (আঃ)','হযরত সুলায়মান (আঃ)','হযরত ইলিয়াস (আঃ)','হযরত আল-ইয়াসা (আঃ)','হযরত ইউনুস (আঃ)','হযরত যাকারিয়া ও ইয়াহইয়া (আঃ)','হযরত ঈসা (আঃ)','হযরত মুহাম্মদ (সাঃ)'];
+const SAHABA=['খাদীজা বিনতু খুওয়াইলিদ (রা:)','আবু বকর সিদ্দিক (রা:)','উমার ইবনুল খাত্তাব (রা:)','উসমান ইবন আফফান (রা:)','আলী ইবন আবী তালিব (রা:)','যুবাইর ইবনুল আওয়াম (রা:)','তালহা ইবন উবাইদুল্লাহ (রা:)','আবদুর রহমান ইবন আউফ (রা:)','সা\'দ ইবন আবী ওয়াক্কাস (রা:)','আবু উবায়দা ইবনুল জাররাহ (রা:)','সাঈদ ইবন যায়েদ (রা:)','হামযা ইবন আবদুল মুত্তালিব (রা:)','আব্বাস ইবন আবদুল মুত্তালিব (রা:)','বিলাল ইবন রাবাহ (রা:)','জা\'ফর ইবন আবী তালিব (রা:)','যায়েদ ইবন হারিসা (রা:)','আবদুল্লাহ ইবন আব্বাস (রা:)','আবদুল্লাহ ইবন মাসউদ (রা:)','আল-আরকাম ইবন আবিল আরকাম (রা:)','আবু হুরাইরা আদ-দাওসী (রা:)','আবু যার আল-গিফারী (রা:)','সালমান আল-ফারেসী (রা:)','উসামা ইবন যায়েদ (রা:)','আবদুল্লাহ ইবন উম্মে মাকতুম (রা:)','তুফাইলি ইবন আম্র আদ-দাওসী (রা:)','সাঈদ ইবন আমের আল-জুমাহী (রা:)','সুরাকা ইবন মালিক (রা:)','ইকরিমা ইবন আবী জাহল (রা:)','আসমা বিনতু আবী বকর (রা:)','আবু মূসা আল আশয়ারী (রা:)','সুহাইব ইবন সিনান আর-রূমী (রা:)','আম্মার ইবন ইয়াসির (রা:)','উসমান ইবন মাজউন (রা:)','আবদুল্লাহ ইবন উমার (রা:)','আবদুল্লাহ ইবন জাহাশ (রা:)','আবদুল্লাহ ইবন আম্র ইবনিল আস (রা:)','মিকদাদ ইবন আম্র (রা:)','আম্র ইবনুল আস (রা:)','খালিদ ইবনুল ওয়ালীদ (রা:)','আবদুল্লাহ ইবন হুজাফাহ আস-সাহমী (রা:)','খাব্বাব ইবনুল আরাত (রা:)','মুগীরা ইবন শু\'বা (রা:)','আবু হুযাইফা ইবন উতবা (রা:)','সালেম মাওলা আবী হুযাইফা (রা:)','হাতিব ইবন আবী বালতা\'য়া (রা:)','উতবা ইবন গাযওয়ান (রা:)','আমের ইবন ফুহাইরা (রা:)','আবদুল্লাহ ইবন সুহাইল (রা:)','যায়েদ ইবনুল খাত্তাব (রা:)','শুরাহবীল ইবন হাসান (রা:)','আবুল আস ইবন রাবী (রা:)','উমাইর ইবন ওয়াহাব (রা:)','সালামা ইবনুল আকওয়া (রা:)','আবু সালামা ইবন আবদিল আসাদ (রা:)','আকীল ইবন আবী তালিব (রা:)','হাকীম ইবন হায়াম (রা:)','আবু রাফে (রা:)','উকাশা ইবন মিহসান (রা:)','শাম্মাস ইবন উসমান (রা:)','শুজা ইবন ওয়াহাব (রা:)','মিহরায ইবন নাদলা (রা:)','শুকরান সালেহ (রা:)','উমাইর ইবন আবী ওয়াক্কাস (রা:)','আবু সুফইয়ান ইবন হারেস (রা:)','বুরাইদাহ ইবনুল হুসাইব (রা:)','আবু বারযাহ আল আসলামী (রা:)','ফাদল ইবন আব্বাস (রা:)','তুলাইব ইবন উমাইর (রা:)','সাওবান ইবন নাজদাহ (রা:)','আম্র ইবন আবাসা (রা:)','ওয়ালীদ ইবনুল ওয়ালীদ ইবনুল মুগীরা (রা:)','সালামা ইবন হিশাম (রা:)','আমের ইবন রাবীয়া (রা:)','উসমান ইবন তালহা (রা:)','হাজ্জাজ ইবন ইলাত (রা:)','কুদামাহ ইবন মাজউন (রা:)','হিশাম ইবনুল আস (রা:)','মুআইকিব ইবন আবী ফাতিমা (রা:)','আবান ইবন সাঈদ ইবনুল আস (রা:)','আম্র ইবন উমাইয়া (রা:)','মিসতাহ ইবন উসাসা (রা:)','মারসাদ ইবন আবী মারসাদ আল গানাবী (রা:)','আবু আহমাদ ইবন জাহাশ (রা:)','আম্র ইবন সাঈদ ইবনুল আস (রা:)','ওয়াকিদ ইবন আবদিল্লাহ (রা:)','আবদুল্লাহ ইবন মাখরামা (রা:)','আস\'য়াদ ইবন যুবারা (রা:)','আবুল হায়সাম ইবন আত-তায়্যিহান (রা:)','উসাইদ ইবন হুুদাইর (রা:)','উবাদা ইবনুস সামিত (রা:)','জাবির ইবন আবদিল্লাহ (রা:)','আবু আইউব আল-আনসারী (রা:)','সা\'দ ইবন মু\'য়ায (রা:)','সা\'দ ইবন উবাদা (রা:)','সা\'দ ইবনুর রাবী\' (রা:)','আবদুল্লাহ ইবন রাওয়াহা (রা:)','আবু তালহা আল-আনসারী (রা:)','আবু মাস\'উদ আল-বদরী (রা:)','আবু কাতাদাহ আল-আনসারী (রা:)'];
+const STORIES=['তায়েফের পথে আলোর পথিক','খাপ খোলা তড়োয়ার','কামারশালার সাহসী পুরুষ','কালো পাহাড়ের আলো','আল্লাহর তরবারি','আলোর আবাবিল'];
+const AMAL=['বালা-মুসিবত দূর করার আমল','শিশুর জিদ দূর করার আমল','একটি শ্রেষ্ঠ দোয়া ও মোনাজাত','দ্বীনদার স্ত্রী লাভের আমল','স্মৃতিশক্তি বৃদ্ধির আমল','রিজিক বৃদ্ধির আমল'];
+const DUAS=['আল্লাহর নিকট সর্বাধিক প্রিয় বাক্য','জান্নাতে একটি ঘর নির্মান','জান্নাতের এক রত্নভান্ডার','এক হাজার সাওয়াব লেখা / এক হাজার পাপ মুছে ফেলার দোয়া'];
+const NAMES=[['الرَّحْمٰنُ','আর-রাহমান','পরম করুণাময়'],['الرَّحِيْمُ','আর-রাহীম','অতি দয়ালু'],['المَلِكُ','আল-মালিক','সর্বাধিপতি, বাদশাহ'],['القُدُّوْسُ','আল-কুদ্দুস','পবিত্র, ত্রুটিমুক্ত'],['السَّلَامُ','আস-সালাম','শান্তিদাতা, নিরাপদ দানকারী'],['المُؤْمِنُ','আল-মু\'মিন','নিরাপত্তা ও ইমান দানকারী'],['المُهَيْمِنُ','আল-মুহাইমিন','রক্ষণাবেক্ষণকারী, অভিভাবক'],['العَزِيْزُ','আল-আজিজ','পরাক্রমশালী, অপ্রতিরোধ্য'],['الجَبَّارُ','আল-জাব্বার','মহাপরাক্রমশালী, বাধ্যকারী'],['المُتَكَبِّرُ','আল-মুতাকাব্বির','সর্বশ্রেষ্ঠত্বের অধিকারী'],['الخَالِقُ','আল-খালিক','সৃষ্টিকর্তা'],['البَارِئُ','আল-বারি','উন্মেষকারী, সুন্দরভাবে সৃষ্টিকারী'],['المُصَوِّرُ','আল-মুসাওয়ির','রূপদানকারী, আকৃতিদাতা'],['الغَفَّارُ','আল-গাফফার','অতি ক্ষমাশীল'],['القَهَّارُ','আল-কাহ্হার','সবকিছুর ওপর বিজয়ী'],['الوَهَّابُ','আল-ওয়াহহাব','অবিরাম দাতা'],['الرَّزَّاقُ','আর-রাজ্জাক','জীবিকাদাতা'],['الفَتَّاحُ','আল-ফাত্তাহ','বিজয়দানকারী, উন্মুক্তকারী'],['العَلِيْمُ','আল-আলিম','সর্বজ্ঞ'],['القَابِضُ','আল-কাবিদ','সংকুচিতকারী'],['البَاسِطُ','আল-বাসিত','সম্প্রসারণকারী'],['الخَافِضُ','আল-খাফিদ','অবনতকারী'],['الرَّافِعُ','আর-রাফি','উন্নীতকারী'],['المُعِزُّ','আল-মুইজ্জ','সম্মানদানকারী'],['المُذِلُّ','আল-মুযিল','অসম্মানকারী'],['السَّمِيْعُ','আস-সামি','সর্বশ্রোতা'],['البَصِيْرُ','আল-বাসির','সর্বদ্রষ্টা'],['الحَكَمُ','আল-হাকাম','চূড়ান্ত বিচারক'],['العَدْلُ','আল-আদল','পরম ন্যায়পরায়ণ'],['اللَّطِيْفُ','আল-লতিফ','সূক্ষ্মদর্শী, অতি দয়ালু'],['الخَبِيْرُ','আল-খবির','সবকিছু সম্পর্কে সম্যক জ্ঞাত'],['الحَلِيْمُ','আল-হালিম','অতি ধৈর্যশীল'],['العَظِيْمُ','আল-আজিম','মহিমান্বিত, মহান'],['الغَفُوْرُ','আল-গফুর','ক্ষমাশীল'],['الشَّكُوْرُ','আস-শাকুর','গুণগ্রাহী'],['العَلِيُّ','আল-আলি','সুউচ্চ, সর্বোচ্চ'],['الكَبِيْرُ','আল-কাবির','অতি মহান'],['الحَفِيْظُ','আল-হাফিজ','সংরক্ষণকারী'],['المُقِيْتُ','আল-মুকিত','খাদ্য ও শক্তি সরবরাহকারী'],['الحَسِيْبُ','আল-হাসিব','হিসাবগ্রহণকারী'],['الجَلِيْلُ','আল-জলিল','মহাসম্মানিত'],['الكَرِيْمُ','আল-করিম','পরম দাতা, সম্মানিত'],['الرَّقِيْبُ','আর-রকিব','পর্যবেক্ষণকারী'],['المُجِيْبُ','আল-মুজিব','দোয়া কবুলকারী'],['الوَاسِعُ','আল-ওয়াসি','সর্বব্যাপী, প্রশস্ত'],['الحَكِيْمُ','আল-হাকিম','প্রজ্ঞাময়'],['الوَدُوْدُ','আল-ওয়াদুদ','পরম প্রেমিক ও স্নেহশীল'],['المَجِيْدُ','আল-মাজিদ','সর্বশ্রেষ্ঠ সম্মানের অধিকারী'],['البَاعِثُ','আল-বায়েস','পুনরুত্থানকারী'],['الشَّهِيدُ','আস-শহিদ','সর্বসাক্ষী'],['الحَقُّ','আল-হাক্ব','সত্য'],['الوَكِيْلُ','আল-ওয়াকিল','কর্মবিধায়ক, ভরসাস্থল'],['القَوِيُّ','আল-কাবিউ','সর্বশক্তিমান'],['المَتِينُ','আল-মাতিন','সুদৃঢ় শক্তির অধিকারী'],['الوَلِيُّ','আল-ওয়ালি','বন্ধু ও অভিভাবক'],['الحمِيدُ','আল-হামিদ','প্রশংসিত'],['المُحْصِي','আল-মুহসি','সবকিছু গণনাকারী'],['المُبْدِئُ','আল-মুবদি','প্রথম সৃষ্টিকারী'],['المُعِيدُ','আল-মুঈদ','পুনরায় সৃষ্টিকারী'],['المُحْيِي','আল-মুহয়ি','জীবনদানকারী'],['المُمِيتُ','আল-মুমিত','মৃত্যুদাতা'],['الحَيُّ','আল-হাইয়ু','চিরজীবন্ত'],['القَيُّومُ','আল-কাইয়ুম','সবকিছুর ধারক ও চালক'],['الوَاجِدُ','আল-ওয়াজিদ','প্রাপ্তকারী, অবিচল'],['المَاجِدُ','আল-মাজিদ','মহানুভব'],['الوَاحِدُ','আল-ওয়াহিদ','এক ও অদ্বিতীয়'],['الأَحَدُ','আল-আহাদ','একক'],['الصَّمَدُ','আস-সামাদ','অমুখাপেক্ষী'],['القَادِرُ','আল-কাদির','সর্বক্ষমতাবান'],['المُقْتَدِرُ','আল-মুকতাদির','সর্বময় ক্ষমতার অধিকারী'],['المُقَدِّمُ','আল-মুকাদ্দিম','অগ্রগামীকারী'],['المُؤَخِّرُ','আল-মুয়াখখির','পশ্চাদগামীকারী'],['الأَوَّلُ','আল-আউয়াল','আদি, প্রথম'],['الآخِرُ','আল-আখির','অন্তিম, শেষ'],['الظَّاهِرُ','আজ-জহির','প্রকাশ্য'],['البَاطِنُ','আল-বাতিন','গোপন, অদৃশ্য'],['الوَالِي','আল-ওয়ালি','পরিচালক'],['المُتَعَالِي','আল-মুতাআলি','সুউচ্চ মর্যাদাবান'],['البَرِّ','আল-বার্র','পরম কল্যাণদাতা'],['التَّوَابُ','আত-তাওয়াব','তওবা কবুলকারী'],['المُنتَقِمُ','আল-মুন্তাক্বিম','প্রতিশোধ গ্রহণকারী'],['العَفُوُّ','আল-আফুভ','অপরাধ মার্জনাকারী'],['الرَّؤُوفُ','আর-রাওউফ','অতীব স্নেহশীল ও দয়ালু'],['مَالِكُ المُلْكِ','মালিকুল মুল্ক','রাজত্বের মালিক'],['ذُو الجَلَالِ وَالإكْرَامِ','যুল জালালি ওয়াল ইকরাম','মহিমান্বিত ও পরম সম্মানিত'],['المُقْسِطُ','আল-মুকসিত','ন্যায়পরায়ণ'],['الجَامِعُ','আল-জামি','একত্রকারী'],['الغَنِيُّ','আল-গানিয়ু','ধনী, অমুখাপেক্ষী'],['المُغْنِي','আল-মুগনি','সমৃদ্ধকারী'],['المَانِعُ','আল-মানি','প্রতিরোধকারী'],['الضَّارُّ','আদ-দ্বার্র','ক্ষতিসাধনকারী'],['النَّافِعُ','আন-নাফি','কল্যাণসাধনকারী'],['النُّورُ','আন-নুর','জ্যোতি, আলো'],['الهَادِي','আল-হাদি','পথপ্রদর্শক'],['البَدِيْعُ','আল-বাদি','অভিনব সৃষ্টিকারী'],['البَاقِي','আল-বাকি','চিরস্থায়ী'],['الوَارِثُ','আল-ওয়ারিস','চূড়ান্ত উত্তরাধিকারী'],['الرَّشِيْدُ','আর-রশিদ','সঠিক পথের নির্দেশক'],['الصَّبُوْرُ','আস-সবুর','চরম ধৈর্যশীল']];
+
+const bn=n=>String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const esc=s=>s.replace(/'/g,"\\'");
+const thumb=(src,g)=>`<div class="thumb"><span class="g">${g}</span><img src="${src}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`;
+const head=(t,s)=>`<h1 class="title">${t}</h1><p class="lead">${s||''}</p>`;
+const bar=()=>`<div class="topbar"><span class="brand" onclick="go('home')">DEEN SPONDON</span><button class="back" onclick="go('home')">‹ হোম</button></div>`;
+const foot=()=>`<div class="foot"><a onclick="go('contact')">Contact us</a> &nbsp;•&nbsp; <a onclick="go('privacy')">Privacy Policy</a><br>Made by Khalid</div>`;
+
+const P={};
+P.home=()=>{
+ document.body.dataset.t='home';
+ return `${bar()}<div class="wrap">${head('ইসলামী জিন্দেগী','একটি ইসলামিক জ্ঞানের ভান্ডার — বিষয় নির্বাচন করুন')}
+ <div class="grid">${HOME.map(([t,k,i,g])=>`<a class="card" onclick="go('${k}')"><h3>${t}</h3>${thumb(i,g)}</a>`).join('')}</div>${foot()}</div>`;
+};
+P.quran=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap">${head('কুরআন শরীফ','পবিত্র গ্রন্থ')}<div class="pdfbox">এখনো কুরআন শরীফ এ্যড করা হয়নি।</div>${foot()}</div>`};
+P.hadith=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap">${head('আল - হাদিস','গ্রন্থ নির্বাচন করুন')}<div class="grid">${HADITH.map(([t,c,a])=>`<a class="card" onclick="go('book','h-${esc(t)}')"><h3>${t}<span class="sub">${c} হাদিস</span></h3><div class="meta">${a}</div></a>`).join('')}</div>${foot()}</div>`};
+P.qudsi=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap">${head('হাদিসে কুদসি')}<div class="content"> হাদিস নং ১ :- </div>${foot()}</div>`};
+P.fiqh=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap">${head('ইসলামিক ফিকাহ')}<div class="grid one"><a class="card" onclick="go('book','fiqh')"><h3>কুরআন ও সুন্নাহর আলোকে ইসলামী ফিকাহ<span class="sub">মুহাম্মদ ইবনে ইবরাহীম আওুওয়াইজিরী</span></h3></a></div>${foot()}</div>`};
+P.hisnul=()=>{document.body.dataset.t='hisnul';return `${bar()}<div class="wrap">${head('হিসনুল মুসলিম','দৈনন্দিন জীবনের দোয়া সংকলন')}<div class="grid">${HISN.map(([t,g],i)=>`<a class="card" onclick="go('book','hisn-${i+1}')">${thumb('images/hisnul/'+(i+1)+'.jpg',g)}<h3 style="margin-top:10px;margin-bottom:0">${t}</h3></a>`).join('')}</div>${foot()}</div>`};
+P.books=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap">${head('ইসলামিক বইসমূহ','PDF পড়তে বইয়ে ক্লিক করুন')}<div class="grid one">${BOOKS.map((t,i)=>`<a class="card" href="pdf/books/${i+1}.pdf" target="_blank"><div class="row"><span class="num">${bn(i+1)}</span><span class="txt">${t}</span></div></a>`).join('')}</div>${foot()}</div>`};
+P.econ=()=>{document.body.dataset.t='econ';return `${bar()}<div class="wrap">${head('ইসলামিক অর্থনীতি','বিষয়ভিত্তিক আলোচনা')}<div class="grid one">${ECON.map((t,i)=>`<a class="card" href="pdf/econ/${i+1}.pdf" target="_blank"><div class="row"><span class="num">${bn(i+1)}</span><span class="txt">${t}</span></div></a>`).join('')}</div>${foot()}</div>`};
+P.quotes=()=>{document.body.dataset.t='stories';let h='';for(let i=1;i<=20;i++)h+=`<img src="images/quotes/${i}.jpg" alt="ইসলামিক উক্তি" loading="lazy" onclick="openLb('images/quotes/${i}.jpg')" onerror="this.style.opacity=.25">`;
+ return `${bar()}<div class="wrap">${head('ইসলামিক উক্তি','ছবিতে ক্লিক করে বড় দেখুন ও ডাউনলোড করুন')}<div class="gal">${h}</div>${foot()}</div>`};
+P.dua=()=>{document.body.dataset.t='dua';return `${bar()}<div class="wrap">${head('দোয়া এবং রুকিয়াহ')}<div class="grid"><a class="card" onclick="go('dualist')"><h3>দোয়া</h3>${thumb('images/dua1.jpg','🤲')}</a><a class="card" onclick="go('ruqyah')"><h3>রুকিয়াহ</h3>${thumb('images/dua2.jpg','🛡️')}</a></div>${foot()}</div>`};
+P.dualist=()=>{document.body.dataset.t='dua';let l=DUAS.map(t=>`<a class="card" onclick="go('book','dua-'+'${esc(t)}')"><div class="row"><span class="num">•</span><span class="txt">${t}</span></div></a>`);
+ for(let i=5;i<=30;i++)l.push(`<a class="card" onclick="go('book','dua-${i}')"><div class="row"><span class="num">${bn(i)}</span><span class="txt"># এখানে দোয়া লিখো</span></div></a>`);
+ return `${bar()}<div class="wrap">${head('দোয়া','৩০ টি দোয়া')}<div class="grid one">${l.join('')}</div>${foot()}</div>`};
+P.ruqyah=()=>{document.body.dataset.t='dua';return `${bar()}<div class="wrap">${head('রুকিয়াহ')}<div class="grid one"><a class="card" onclick="go('book','ruq-1')"><div class="row"><span class="num">১</span><span class="txt">রুকিয়া কাকে বলে...?</span></div></a><a class="card" onclick="go('book','ruq-2')"><div class="row"><span class="num">২</span><span class="txt">সুন্নাহ-তে বর্ণিত রুকিয়াহ সমূহ</span></div></a></div>${foot()}</div>`};
+P.prophets=()=>{document.body.dataset.t='prophets';return `${bar()}<div class="wrap">${head('নবীদের জীবনী')}<div class="grid">${PROPHETS.map((t,i)=>`<a class="card" onclick="go('book','p-${i}')"><div class="row"><span class="num">${bn(i+1)}</span><span class="txt">${t}</span></div></a>`).join('')}</div>${foot()}</div>`};
+P.sahaba=()=>{document.body.dataset.t='sahaba';return `${bar()}<div class="wrap">${head('সাহাবিদের জীবনী')}<div class="grid">${SAHABA.map((t,i)=>`<a class="card" onclick="go('book','s-${i}')"><div class="row"><span class="num">${bn(i+1)}</span><span class="txt">${t}</span></div></a>`).join('')}</div>${foot()}</div>`};
+P.stories=()=>{document.body.dataset.t='stories';return `${bar()}<div class="wrap">${head('ইসলামিক গল্প','PDF পড়তে গল্পে ক্লিক করুন')}<div class="grid one">${STORIES.map((t,i)=>`<a class="card" href="pdf/stories/${i+1}.pdf" target="_blank"><div class="row"><span class="num">${bn(i+1)}</span><span class="txt">${t}</span></div></a>`).join('')}</div>${foot()}</div>`};
+P.amal=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap"><div class="bismillah">بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ</div><h1 class="title">পাঁচ ওয়াক্ত নামাজের আমল</h1><div class="grid one">${AMAL.map((t,i)=>`<a class="card" onclick="go('book','a-${i}')"><div class="row"><span class="num">${bn(i+1)}</span><span class="txt">${t}</span></div></a>`).join('')}</div>${foot()}</div>`};
+P.names=()=>{document.body.dataset.t='names';return `${bar()}<div class="wrap">${head('আল্লাহর ৯৯ টি নাম','আসমাউল হুসনা')}<div class="grid">${NAMES.map(([ar,bn2,mn],i)=>`<div class="namebox"><div class="ar">${ar}</div><div class="bn">${bn(i+1)}. ${bn2}</div><div class="mn">${mn}</div></div>`).join('')}</div>${foot()}</div>`};
+P.donate=()=>{document.body.dataset.t='donate';return `${bar()}<div class="wrap">${head('দান করুন')}<div class="copybox"><p>অসহায় মানুষদের পাশে দাঁড়াতে নিচের দেওয়া নাম্বারে টাকা পাঠাতে পারেন। আপনার দানের টাকা অবশ্যই একজন অসহায় মানুষের কাছে পৌঁছে দেয়া হবে।</p><p style="margin-top:14px;font-size:.85rem;opacity:.75">Nagad / Bkash</p><div class="no" id="don">01647778190</div><button class="btn" id="cpy" onclick="copyNo()">কপি করুন</button><p style="margin-top:12px;font-size:.8rem;opacity:.7">Parsonal</p></div>${foot()}</div>`};
+P.contact=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap">${head('Contact us')}<div class="content">যোগাযোগ: support@deenspondon.com
+ফোন / হোয়াটসঅ্যাপ: 01647778190
+
+যেকোনো মতামত বা সংশোধনের জন্য আমাদের জানাতে পারেন।</div>${foot()}</div>`};
+P.privacy=()=>{document.body.dataset.t='hadith';return `${bar()}<div class="wrap">${head('Privacy Policy')}<div class="content"># এখানে প্রাইভেসি পলিসি লিখো</div>${foot()}</div>`};
+P.book=(k)=>{
+ document.body.dataset.t='hadith';
+ const map={
+  'fiqh':['ইসলামী ফিকাহ','# এখানে কিতাবের বিস্তারিত লিখো'],
+  'qudsi':['হাদিসে কুদসি','# এখানে হাদিস কুদসি লিখো'],
+  'ruq-1':['রুকিয়াহ','# এখানে রুকিয়া কাকে বলে লিখো'],
+  'ruq-2':['রুকিয়াহ','# এখানে সুন্নাহ-তে বর্ণিত রুকিয়াহ সমূহ লিখো']
+ };
+ let title='',body='';
+ if(map[k]){[title,body]=map[k];}
+ else if(k.startsWith('h-')){title=decodeURIComponent(k.slice(2));body='# এখানে '+title+' এর হাদিসগুলো লিখো';}
+ else if(k.startsWith('hisn-')){title='হিসনুল মুসলিম — '+HISN[+k.slice(5)-1][0];body='# এখানে '+title+' এর দোয়াগুলো লিখো';}
+ else if(k.startsWith('p-')){title=PROPHETS[+k.slice(2)];body='# এখানে '+title+' এর জীবনী লিখো';}
+ else if(k.startsWith('s-')){title=SAHABA[+k.slice(2)];body='# এখানে '+title+' এর জীবনী লিখো';}
+ else if(k.startsWith('a-')){title=AMAL[+k.slice(2)];body='# এখানে '+title+' লিখো';}
+ else if(k.startsWith('dua-')){const r=k.slice(4);title=isNaN(r)?r:('# দোয়া নং '+r);body='# এখানে '+title+' লিখো';}
+ return `${bar()}<div class="wrap">${head(title)}<div class="content">${body}</div>${foot()}</div>`;
+};
+
+let CUR={p:'home',x:undefined};
+function go(p,x){CUR={p:p,x:x};render();}
+function render(){
+ const p=CUR.p,x=CUR.x;
+ if(p==='dua'){
+   const hs=$('#handSplash');
+   hs.style.display='grid';
+   setTimeout(()=>{hs.classList.add('hide');setTimeout(()=>{hs.style.display='none';hs.classList.remove('hide');},500);},1400);
+ }
+ try{ app.innerHTML=(P[p]||P.home)(x); }catch(e){ app.innerHTML='<div style="padding:30px;text-align:center">ত্রুটি: '+e.message+'</div>'; }
+ window.scrollTo(0,0);
+}
+function openLb(src){$('#lbImg').src=src;$('#lbDl').href=src;$('#lb').classList.add('on');}
+function copyNo(){const t=$('#don').textContent;navigator.clipboard.writeText(t).then(()=>{const b=$('#cpy');b.textContent='✓ কপি হয়েছে';b.classList.add('ok');setTimeout(()=>{b.textContent='কপি করুন';b.classList.remove('ok');},1600);});}
+render();
+setTimeout(()=>{const s=$('#splash');s.classList.add('hide');setTimeout(()=>s.remove(),900);},2600);
+</script>
+</body>
+</html>
